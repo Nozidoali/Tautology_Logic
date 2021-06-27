@@ -1,0 +1,6 @@
+[submodule "DRiLLS"]
+	path = DRiLLS
+	url = https://github.com/scale-lab/DRiLLS.git
+[submodule "abc"]
+	path = abc
+	url = https://github.com/berkeley-abc/abc.git

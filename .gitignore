@@ -1,4 +1,9 @@
-abc
-abc.rc
-results/
-*.temp
+.venv
+
+playground
+model
+
+*.blif
+*.yml
+
+__pycache__
