@@ -9,6 +9,8 @@ git clone --recursive https://github.com/Nozidoali/Tautology_Logic.git
 
 Next, build the virtual environment for our program and install the dependencies:
 ```sh
+cd Tautology_Logic
+pip install virtualenv
 virtualenv .venv --python=python3.6
 source .venv/bin/activate
 pip install -r requirements.txt

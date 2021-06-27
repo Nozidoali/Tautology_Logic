@@ -45,8 +45,8 @@ def write_tautology_to_blif(
 def write_config_to_drills(
     blif_file: str = 'output.blif',
     run_mode: str = 'fpga',
-    episode_num: int = 50,
-    iteration_num: int = 100):
+    episode_num: int = 5,
+    iteration_num: int = 20):
     model_dir = os.path.abspath('./model/model')
     if os.path.isdir('model') == False:
         os.mkdir('model')
@@ -79,4 +79,14 @@ model_dir: {}
     episode_num,
     iteration_num,
     model_dir))
-    log = subprocess.getoutput('python DRiLLS/drills.py train {}'.format(run_mode))
+
+    command = 'python DRiLLS/drills.py train {}'.format(run_mode)
+    proc = subprocess.Popen(
+        command.split(),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT)
+    while True:
+        line = proc.stdout.readline().decode('utf-8')
+        if not line:
+            break
+        print(line, end='')
