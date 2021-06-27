@@ -15,7 +15,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Tautology Generator')
     parser.add_argument('--size', dest='size',
         help='input number of the circuit',
-        default = 6, action='store_true')
+        type=int,
+        default = 6)
     parser.add_argument('--output', dest='output',
         help='blif file directory', 
         default='')

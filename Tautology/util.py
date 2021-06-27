@@ -45,8 +45,8 @@ def write_tautology_to_blif(
 def write_config_to_drills(
     blif_file: str = 'output.blif',
     run_mode: str = 'fpga',
-    episode_num: int = 5,
-    iteration_num: int = 10):
+    episode_num: int = 50,
+    iteration_num: int = 100):
     model_dir = os.path.abspath('./model/model')
     if os.path.isdir('model') == False:
         os.mkdir('model')
@@ -80,4 +80,3 @@ model_dir: {}
     iteration_num,
     model_dir))
     log = subprocess.getoutput('python DRiLLS/drills.py train {}'.format(run_mode))
-    print(log)
