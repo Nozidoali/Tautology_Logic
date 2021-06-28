@@ -45,8 +45,8 @@ def write_tautology_to_blif(
 def write_config_to_drills(
     blif_file: str = 'output.blif',
     run_mode: str = 'fpga',
-    episode_num: int = 5,
-    iteration_num: int = 20):
+    episode_num: int = 50,
+    iteration_num: int = 100):
     model_dir = os.path.abspath('./model/model')
     if os.path.isdir('model') == False:
         os.mkdir('model')
@@ -90,3 +90,27 @@ model_dir: {}
         if not line:
             break
         print(line, end='')
+
+def show_output_as_csv(
+    episode_max_num: int = 100,
+    playground_path: str = 'playground'):
+    '''
+    show_output_as_csv: retrieve the result in the playground directory, and 
+    return the csv of the following columns:
+    <iter_num>, <circuit level>, <circuit area>
+    '''
+    for episode_num in range(episode_max_num):
+        episode_dir = os.path.join(
+            os.path.abspath(playground_path),
+            str(episode_num+1),
+            'log.csv')
+        with open(episode_dir) as f:
+            result_line = f.readlines()[-1]
+            result_level = result_line.split(',')[2].strip()
+            result_area = result_line.split(',')[3].strip()
+            print(','.join([
+                str(episode_num),
+                str(result_level),
+                str(result_area)
+            ]))
+        

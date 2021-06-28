@@ -23,6 +23,9 @@ if __name__ == '__main__':
     parser.add_argument('--train', dest='train',
         help='blif file RL agent learn to optimize',
         default='')
+    parser.add_argument('--print', dest='print',
+        help='print the reward of training process',
+        default='')
     args = parser.parse_args()
     # parse the command
 
@@ -42,5 +45,10 @@ if __name__ == '__main__':
         blif_file = args.train
         write_config_to_drills(
             blif_file=blif_file)
-
-        
+    if args.print != '':
+        '''
+        print mode: plot the training process in the playground
+        '''
+        episode_max_num = int(args.print)
+        show_output_as_csv(
+            episode_max_num=episode_max_num)
