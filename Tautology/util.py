@@ -97,7 +97,7 @@ def show_output_as_csv(
     '''
     show_output_as_csv: retrieve the result in the playground directory, and 
     return the csv of the following columns:
-    <iter_num>, <circuit level>, <circuit area>
+    <iter_num>, <circuit area>, <circuit level>
     '''
     for episode_num in range(episode_max_num):
         episode_dir = os.path.join(
@@ -106,11 +106,11 @@ def show_output_as_csv(
             'log.csv')
         with open(episode_dir) as f:
             result_line = f.readlines()[-1]
-            result_level = result_line.split(',')[2].strip()
-            result_area = result_line.split(',')[3].strip()
+            result_area = result_line.split(',')[2].strip()
+            result_level = result_line.split(',')[3].strip()
             print(','.join([
                 str(episode_num),
-                str(result_level),
-                str(result_area)
+                str(result_area),
+                str(result_level)
             ]))
         

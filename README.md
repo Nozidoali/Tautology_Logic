@@ -17,15 +17,17 @@ pip install -r requirements.txt
 ```
 
 ## Run
-
+First, we use the output function to generate a tautology with 8 inputs:
 ```
-usage: main.py [-h] [--size] [--output OUTPUT] [--train TRAIN]
+python main.py --output output.blif --size 8
+```
 
-Tautology Generator
+Then we train it using Reinforcement Learning
+```
+python main.py --train output.blif
+```
 
-optional arguments:
-  -h, --help       show this help message and exit
-  --size           input number of the circuit
-  --output OUTPUT  blif file directory
-  --train TRAIN    blif file RL agent learn to optimize
+Next, we retrieve the result using:
+```
+python main.py --print 50
 ```

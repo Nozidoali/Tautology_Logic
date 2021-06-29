@@ -2,6 +2,7 @@
 
 playground
 model
+results
 
 *.blif
 *.yml
