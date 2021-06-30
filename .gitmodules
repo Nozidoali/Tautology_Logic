@@ -1,3 +1,9 @@
 [submodule "DRiLLS"]
 	path = DRiLLS
 	url = https://github.com/scale-lab/DRiLLS.git
+[submodule "abcRL"]
+	path = abcRL
+	url = https://github.com/krzhu/abcRL.git
+[submodule "abc_py"]
+	path = abc_py
+	url = https://github.com/krzhu/abc_py.git

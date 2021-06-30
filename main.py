@@ -7,7 +7,12 @@ The function of this script is to autometically generate difficult benchmarks
 and try to solve it and collect experience using Reinforcement Learning Agent
 '''
 
+import sys
+sys.path.append('abcRL')
+
+
 from Tautology.util import *
+from abcRL.testReinforce import *
 import argparse
 
 if __name__ == '__main__':
@@ -21,6 +26,9 @@ if __name__ == '__main__':
         help='blif file directory', 
         default='')
     parser.add_argument('--train', dest='train',
+        help='blif file RL agent learn to optimize',
+        default='')
+    parser.add_argument('--rltrain', dest='rltrain',
         help='blif file RL agent learn to optimize',
         default='')
     parser.add_argument('--print', dest='print',
@@ -52,3 +60,10 @@ if __name__ == '__main__':
         episode_max_num = int(args.print)
         show_output_as_csv(
             episode_max_num=episode_max_num)
+
+    if args.rltrain != '':
+        '''
+        train abcRL training: use RL agent and GNN network to optimize the circuit
+        '''
+        blif_file = args.train
+        testReinforce(blif_file, 'bmark')
